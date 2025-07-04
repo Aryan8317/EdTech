@@ -1,6 +1,6 @@
-const nodemailer =require('nodemailer');
+const nodemailer = require('nodemailer');
 
-const mailSender= async(email,title,body)=>
+const mailSender = async(email,title,body) =>
 {
     try {
         let transporter=nodemailer.createTransport(
@@ -13,7 +13,7 @@ const mailSender= async(email,title,body)=>
                 }
             }
         )
-        let info= wait = transporter.sendMail(
+        let info = await transporter.sendMail(
             {
                 from:'studyNotion  by Aryan',
                 to:`${email}`,
@@ -30,4 +30,4 @@ const mailSender= async(email,title,body)=>
         
     }
 }
-module.exports=mailSender; 
+module.exports = mailSender; 

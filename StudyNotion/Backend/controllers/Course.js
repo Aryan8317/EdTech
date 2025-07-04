@@ -2,9 +2,9 @@ const Course = require("../models/Course");
 const Category = require("../models/Category");
 const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
-const { convertSecondsToDuration}= require("../utils/secToDuration");
-const CourseProgress = require("../models/CourseProgress")
-const Section = require("../models/Section")
+const { convertSecondsToDuration } = require("../utils/secToDuration");
+const CourseProgress = require("../models/courseprogress");
+const Section = require("../models/Section");
 const SubSection = require("../models/SubSection");
 
 

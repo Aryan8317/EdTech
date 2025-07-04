@@ -16,14 +16,14 @@ const { resetPasswordToken, resetPassword } = require("../controllers/ResetPassw
 //                                      Profile routes
 // ********************************************************************************************************
 // Delet User Account
-router.delete("/deleteProfile",auth,isDemo,deleteAccount)
-router.put("/updateProfile", auth,isDemo, updateProfile)
+router.delete("/deleteProfile", auth, isDemo, deleteAccount)
+router.put("/updateProfile", auth, isDemo, updateProfile)
 router.get("/getUserDetails", auth, getAllUserDetails)
 // Get Enrolled Courses
 router.get("/getEnrolledCourses", auth, getEnrolledCourses)
-router.put("/updateDisplayPicture", auth,isDemo, updateDisplayPicture)
+router.put("/updateDisplayPicture", auth, isDemo, updateDisplayPicture)
 //get instructor dashboard details
-router.get("/getInstructorDashboardDetails",auth,isInstructor, instructorDashboard)
+router.get("/getInstructorDashboardDetails", auth, isInstructor, instructorDashboard)
 
 // Password Reset Routes
 router.post("/reset-password-token", resetPasswordToken);

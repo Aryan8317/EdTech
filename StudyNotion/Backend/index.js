@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-const { cloudnairyconnect } = require("./config/cloudinary");
+const { cloudinaryconnect } = require("./config/cloudinary");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -42,7 +42,7 @@ app.use(
   })
 );
 
-cloudnairyconnect();
+cloudinaryconnect();
 
 app.use("/api/v1/auth", userRoutes);
 
