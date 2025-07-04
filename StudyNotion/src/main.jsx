@@ -9,7 +9,6 @@ import rootReducer from "./reducers";
 import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./Components/scrollToTop";
 import swDev from "./swDev";
-import EditCourse from "./Components/core/Dashboard/EditCourse.jsx/EditCourse";
 
 const store= configureStore({
     reducer: rootReducer,
