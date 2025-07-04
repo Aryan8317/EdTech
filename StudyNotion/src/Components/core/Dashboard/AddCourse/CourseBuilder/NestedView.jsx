@@ -4,7 +4,7 @@ import { VscAdd, VscEdit } from 'react-icons/vsc';
 import { VscTrash } from 'react-icons/vsc';
 import { VscTriangleDown } from 'react-icons/vsc';
 import { useState } from 'react';
-import ConfirmationModal from ".././../../.././common/ConfirmationModal"
+import ConfirmationModal from "../../../common/ConfirmationModal"
 import SubSectionModal from './SubsectionModal';
 import { deleteSection, deleteSubSection } from '../../../../../services/operations/courseDetailsAPI';
 import { setCourse } from '../../../../../slices/courseSlice';
