@@ -7,7 +7,7 @@ import { contactusEndpoint } from '../../services/apis';
 import toast from 'react-hot-toast';
 import countryCode from "../../data/countrycode.json"
 
-const ContactUsForm = () => {
+const contactUsForm = () => {
     const [loading, setloading] = useState(false);
     const {register,handleSubmit,reset,formState:{errors,isSubmitSuccessful}}=useForm();
     useEffect(() => {
@@ -104,4 +104,4 @@ const ContactUsForm = () => {
   )
 }
 
-export default ContactUsForm
+export default contactUsForm
