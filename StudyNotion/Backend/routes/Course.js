@@ -15,7 +15,7 @@ const {
   deleteCourse,
   searchCourse,
   markLectureAsComplete,
-} = require("../controllers/course")
+} = require("../controllers/Course")
 
 
 // Categories Controllers Import
