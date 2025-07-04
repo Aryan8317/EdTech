@@ -4,9 +4,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { ControlBar, Player } from 'video-react';
-// import '~video-react/dist/video-react.css'; // import css
-import { BigPlayButton, LoadingSpinner, PlaybackRateMenuButton, ForwardControl, ReplayControl, CurrentTimeDisplay, TimeDivider } from 'video-react';
+import ReactPlayer from 'react-player';
 import {BiSkipPreviousCircle} from 'react-icons/bi';
 import {BiSkipNextCircle} from 'react-icons/bi';
 import {MdOutlineReplayCircleFilled} from 'react-icons/md';
@@ -25,6 +23,9 @@ const VideoDetails = () => {
   const {courseSectionData, courseEntireData, completedLectures, totalNoOfLectures} = useSelector(state => state.viewCourse);
   const navigate = useNavigate();
   const playerRef = React.useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const [played, setPlayed] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const [videoData, setVideoData] = useState([]);
   const [videoEnd, setVideoEnd] = useState(false);
@@ -121,26 +122,33 @@ const VideoDetails = () => {
         !videoData ? <h1>Loading...</h1> :
         (
           <div>
-            <Player className="w-full relative"
-              ref={playerRef}
-              src={videoData.videoUrl}
-              aspectRatio="16:9"
-              fluid={true}
-              autoPlay={false}
-              onEnded={() => setVideoEnd(true)}
-            >
-              
-              <BigPlayButton position="center" />
-
-              <LoadingSpinner />
-              <ControlBar>
-              <PlaybackRateMenuButton rates={[5, 2, 1, 0.5, 0.1]} order={7.1} />
-              <ReplayControl seconds={5} order={7.1} />
-              <ForwardControl seconds={5} order={7.2} />
-              <TimeDivider order={4.2} />
-              <CurrentTimeDisplay order={4.1} />
-              <TimeDivider order={4.2} />
-              </ControlBar>
+            <div className="w-full relative" style={{ aspectRatio: "16:9" }}>
+              <ReactPlayer
+                ref={playerRef}
+                url={videoData.videoUrl}
+                width="100%"
+                height="100%"
+                playing={playing}
+                controls={true}
+                onPlay={() => setPlaying(true)}
+                onPause={() => setPlaying(false)}
+                onProgress={(state) => {
+                  setPlayed(state.played);
+                  if (state.played >= 0.9) { // Mark as complete when 90% watched
+                    setVideoEnd(true);
+                  }
+                }}
+                onDuration={setDuration}
+                onEnded={() => setVideoEnd(true)}
+                config={{
+                  file: {
+                    attributes: {
+                      controlsList: 'nodownload',
+                      disablePictureInPicture: true
+                    }
+                  }
+                }}
+              />
               {
                 videoEnd && (
                   <div className='flex justify-center items-center'>
@@ -169,12 +177,12 @@ const VideoDetails = () => {
                     )
                   }
                   {
-                    <MdOutlineReplayCircleFilled onClick={() =>{ playerRef.current.seek(0);playerRef.current.play();setVideoEnd(false)}} className="text-2xl md:text-5xl bg-richblack-600 rounded-full cursor-pointer hover:scale-90 absolute top-1/2 z-20"/>
+                    <MdOutlineReplayCircleFilled onClick={() =>{ playerRef.current.seekTo(0); setPlaying(true); setVideoEnd(false)}} className="text-2xl md:text-5xl bg-richblack-600 rounded-full cursor-pointer hover:scale-90 absolute top-1/2 z-20"/>
                   }
                   </div>
                 )
               }
-            </Player>
+            </div>
           </div>
         )
       }
