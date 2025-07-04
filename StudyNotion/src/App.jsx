@@ -18,19 +18,19 @@ import Dashboard from "./pages/Dashboard";
 import OpenRoute from "./Components/core/Auth/OpenRoute";
 import PrivateRoute from "./Components/core/Auth/PrivateRoute";
 import MyProfile from "./Components/core/Dashboard/MyProfile";
-import Setting from "./Components/core/Dashboard/Settings";
+import Settings from "./Components/core/Dashboard/Settings";
 import EnrolledCourses from "./Components/core/Dashboard/EnrolledCourses";
 import Cart from "./Components/core/Dashboard/Cart/index";
 import { ACCOUNT_TYPE } from './utilis/constants';
 import AddCourse from "./Components/core/Dashboard/AddCourse/index";
 import MyCourses from "./Components/core/Dashboard/MyCourses/MyCourses";
-import EditCourse from "./Components/core/Dashboard/EditCourse.jsx/EditCourse";
+import EditCourse from "./Components/core/Dashboard/EditCourse/EditCourse";
 import Catalog from "./pages/Catalog";
-import ScrollToTop from "./Components/ScrollToTop";
+import ScrollToTop from "./Components/scrollToTop";
 import CourseDetails from "./pages/CourseDetails";
 import SearchCourse from "./pages/SearchCourse";
 import ViewCourse from "./pages/ViewCourse";
-import VideoDetails from "./Components/core/ViewCourse/VideoDetails";
+import VideoDetails from "./Components/core/Viewcourse/VideoDetails";
 import PurchaseHistory from "./Components/core/Dashboard/PurchaseHistory";
 import InstructorDashboard from "./Components/core/Dashboard/InstructorDashboard/InstructorDashboard";
 import { RiWifiOffLine } from "react-icons/ri";
@@ -111,7 +111,7 @@ function App() {
           }
         >
           <Route path="my-profile" element={<MyProfile />} />
-          <Route path="settings" element={<Setting />} />
+          <Route path="settings" element={<Settings />} />
           {user?.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
               <Route path="cart" element={<Cart />} />
