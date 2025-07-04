@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactUsForm from '../../ContactUS/contactUsForm'
+import ContactUsForm from '../../contactUS/contactUsForm'
 
 const ContactFormSection = () => {
   return (
