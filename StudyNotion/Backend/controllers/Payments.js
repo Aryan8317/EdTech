@@ -6,7 +6,7 @@ const {courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail
 const {paymentSuccess} = require("../mail/templates/paymentSuccess");
 const { default: mongoose } = require("mongoose");
 const crypto = require("crypto");
-const CourseProgress = require("../models/CourseProgress");
+const CourseProgress = require("../models/courseprogress");
 
 
 exports.capturePayment = async (req, res) => {
