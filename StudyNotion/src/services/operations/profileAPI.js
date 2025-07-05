@@ -21,7 +21,7 @@ export async function getUserCourses(token,dispatch){
         profileEndpoints.GET_USER_ENROLLED_COURSES_API,
         null,
         {
-          Authorisation: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         }
       )
       console.log("AFTER Calling BACKEND API FOR ENROLLED COURSES");
@@ -54,7 +54,7 @@ export async function updatePfp(token,pfp){
     formData.append('pfp',pfp);
     formData.append("token", token);
     const response = await apiConnector("PUT", settingsEndpoints.UPDATE_DISPLAY_PICTURE_API,formData,{
-      Authorisation: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data",
     });
     console.log("UPDATE_DISPLAY_PICTURE_API API RESPONSE............", response)
@@ -84,7 +84,7 @@ export async function updateAdditionalDetails(token,additionalDetails){
   const toastId = toast.loading("Updating...");
   try {
     const response = await apiConnector("PUT", settingsEndpoints.UPDATE_PROFILE_API,{firstName,lastName,dateOfBirth,gender,contactNumber,about},{
-      Authorisation: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     });
     console.log("UPDATE_ADDITIONAL_DETAILS_API API RESPONSE............", response)
     if (!response.data.success) {
@@ -119,7 +119,7 @@ export async function updatePassword(token,password){
   const toastId = toast.loading("Updating...");
   try {
    const response = await apiConnector("POST", settingsEndpoints.CHANGE_PASSWORD_API,{oldPassword, newPassword, confirmNewPassword},{
-      Authorisation: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     });
     console.log("UPDATE_PASSWORD_API API RESPONSE............", response)
     if (!response.data.success) {
@@ -141,7 +141,7 @@ export async function deleteAccount(token,dispatch,navigate){
   const toastId = toast.loading("Deleting...");
   try {
     const response = await apiConnector("DELETE", settingsEndpoints.DELETE_PROFILE_API,null,{
-      Authorisation: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     });
     console.log("DELETE_ACCOUNT_API API RESPONSE............", response)
     if (!response.data.success) {
@@ -169,7 +169,7 @@ export async function getInstructorDashboard(token,dispatch){
       profileEndpoints.GET_ALL_INSTRUCTOR_DASHBOARD_DETAILS_API,
       null,
       {
-        Authorisation: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       }
     )
     console.log("AFTER Calling BACKEND API FOR INSTRUCTOR DASHBOARD");
