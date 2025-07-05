@@ -278,7 +278,7 @@ export const fetchInstructorCourses = async (token) => {
       GET_ALL_INSTRUCTOR_COURSES_API,
       null,
       {
-        Authorisation: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       }
     );
     console.log("INSTRUCTOR COURSES API RESPONSE............", response);
@@ -326,7 +326,7 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
         courseId,
       },
       {
-        Authorisation: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       }
     );
     console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response);

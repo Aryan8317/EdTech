@@ -47,7 +47,7 @@ const RatingSlider = () => {
         }}
         allowSlidePrev={true}
         slidesPerView={1}
-        loop={true}
+        loop={Reviews.length > 3}
         spaceBetween={20}
         pagination={false}
         modules={[Mousewheel, Keyboard, Autoplay]}
@@ -63,12 +63,6 @@ const RatingSlider = () => {
         rewind={false}
         centeredSlides={true}
         navigation={false}
-        // navigation={
-        //     {
-        //         nextEl: ".swiper-button-next",
-        //         prevEl: ".swiper-button-prev",
-        //     }
-        // }
         breakpoints={{
           300: { slidesPerView: 1.1, spaceBetween: 10 },
           640: { slidesPerView: 2.2 },
