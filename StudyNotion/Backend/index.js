@@ -92,14 +92,6 @@ app.use("/api/v1/course", CourseRoutes);
 
 app.use("/api/v1/contact", require("./routes/ContactUs"));
 
-// Test route to check CORS
-app.get("/api/v1/test", (req, res) => {
-  res.status(200).json({
-    message: "CORS test successful",
-    timestamp: new Date().toISOString()
-  });
-});
-
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Welcome to the API",
